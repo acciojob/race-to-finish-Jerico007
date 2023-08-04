@@ -2,35 +2,39 @@ window.promises = [];
 
 // Do not change the code above this
 // add your promises to the array `promises`
-let a = new Promise(resolve => {
-setTimeout(() => { 
-	resolve("a")
-}, 3000)
-})
-let b = new Promise(resolve => {
-setTimeout(() => { 
-	resolve("b")
-}, 2000)
-}) 
-let c = new Promise(resolve => {
-setTimeout(() => {
-resolve("c")
-}, 1000)
-})
-let d = new Promise(resolve => {
-setTimeout(() => { 
-	resolve("d")
-}, 4000)
-})
-	let e = new Promise(resolve => {
-setTimeout(() => { 
-	resolve("e")
-}, 5000)
+ let prom1 = new Promise((resolve) => {
+	 setTimeout(()=>{
+		 resolve(10);
+	 },3000);
+ })
+ let prom2 = new Promise((resolve) => {
+	 setTimeout(()=>{
+		 resolve(12);
+	 },1000);
+ })
+ let prom3 = new Promise((resolve) => {
+	 setTimeout(()=>{
+		 resolve(30);
+	 },2000);
+ })
+ let prom4 = new Promise((resolve) => {
+	 setTimeout(()=>{
+		 resolve(40);
+	 },5000);
+ })
+ let prom5 = new Promise((resolve) => {
+	 setTimeout(()=>{
+		 resolve(50);
+	 },4000);
+ })
+
+let x = Promise.any([prom1,prom2,prom3,prom4,prom5]);
+window.promises = [prom1,prom2,prom3,prom4,prom5];
+console.log(x);
+
+x.then((data)=>{
+	let output = document.getElementById("output");
+	output.innerHTML = `<p>${data}</p>`;
 })
 
-let x = Promise.any([a,b,c,d,e])
-window.promises=[a,b,c,d,e];
-x.then((data) => {
-	const element = document.getElementById("output")
-	element.innerText=data;
-})
+
